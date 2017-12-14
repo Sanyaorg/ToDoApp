@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>
+    <%= title %>
+  </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: linen;
+      height: 100%;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    h1 {
+      color: #fff;
+      margin-left: 40px;
+    }
+
+    .add-item {
+      height: 50px;
+    }
+
+    .item {
+      word-break: break-all;
+    }
+
+    .inner-form {
+      background-color: #888;
+      border-radius: 10px;
+      padding: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-12">
+        <div class="row justify-content-center">
+          <div class="col-6 inner-form">
+            <h1 class="text-center my-1"><%= title %></h1>
+            <form action="/todo/add" method="post">
+              <div class="input-group mb-1 mt-5 add-item">
+                <input type="text" class="form-control" name="todo" placeholder="Add new item to do">
+                <span class="input-group-btn">
+            <button type="submit" class="btn btn-success">Add ToDo</button>
+          </span>
+              </div>
+            </form>
+            <form action="todo/delete" method="post">
+              <ul class="list-group">
+                <% todos.forEach(function(todo){ %>
+                  <li class="list-group-item my-1 list-group-item-info">
+                    <label class="form-check-label col-12 item">
+            <input type="checkbox" class="form-check-input" name="todos" value="<%= todo %>">
+          <%= todo %>
+            </label>
+                  </li>
+                  <% }) %>
+              </ul>
+              <button type="submit" class="btn btn-danger my-5 float-right">Remove</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
